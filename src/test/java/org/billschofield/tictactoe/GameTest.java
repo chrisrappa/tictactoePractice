@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -15,15 +17,15 @@ public class GameTest {
     private Game game;
     private PrintStream printStream;
     private BufferedReader bufferedReader;
-    private Player playerOne;
+    private Player player;
 
     @Before
     public void setUp() {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
-        playerOne = mock(Player.class);
-        game = new Game(board, printStream, bufferedReader, playerOne);
+        player = mock(Player.class);
+        game = new Game(board, printStream, bufferedReader, player);
     }
 
     @Test
@@ -46,11 +48,11 @@ public class GameTest {
     @Test
     public void shouldMarkTheBoardWherePlayerOneMoves() throws IOException {
         when(bufferedReader.readLine()).thenReturn("-1");
-        when(playerOne.nextMove()).thenReturn(7);
+        when(player.nextMove()).thenReturn(7);
 
         game.start();
 
-        verify(board).mark(7);
+        verify(board).mark(7, player.currentPlayer);
     }
 
     @Test
@@ -59,7 +61,7 @@ public class GameTest {
 
         game.start();
 
-        verify(board).mark(1);
+        verify(board).mark(1, player.currentPlayer);
     }
 
     @Test
@@ -68,6 +70,6 @@ public class GameTest {
 
         game.start();
 
-        verify(board).mark(1000);
+        verify(board).mark(1000, player.currentPlayer);
     }
 }
