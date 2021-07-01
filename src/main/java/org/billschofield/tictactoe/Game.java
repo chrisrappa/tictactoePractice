@@ -16,10 +16,7 @@ public class Game {
     private BufferedReader bufferedReader;
     private Player player;
 
-    Integer[] locationListOriginal = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     List<String> locationList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-//    Collection locationCollection = new ArrayList(Arrays.asList(locationList));
-
 
 
     public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player player) {
@@ -45,13 +42,12 @@ public class Game {
 //        For some reason the implemention of lists alone is causing the tests
 //        to fail
 
-//        String locationToChange = "1";
         String locationToChange = locationList.get(playerMove - 1);
 //        board.draw();
 
         if(locationToChange != "X" && locationToChange != "O"){
 //            // locationList.set(playerMove - 1, "X");
-////            System.out.println(locationList);
+
             board.mark(playerMove, player.currentPlayer);
             board.mark(player.nextMove(), player.currentPlayer);
             board.draw();
@@ -63,9 +59,6 @@ public class Game {
         }
     }
 
-//    public boolean didCurrentUserWin() {
-//
-//    }
 
 
     private int determinePlayerMove() {
