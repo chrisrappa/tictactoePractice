@@ -1,5 +1,7 @@
 package org.billschofield.tictactoe;
 
+import java.io.PrintStream;
+
 public class Player {
 
     public String playerOne = "Player 1";
@@ -11,6 +13,7 @@ public class Player {
 
         if (currentPlayer == playerOne) {
             currentPlayer = playerTwo;
+
         } else {
             currentPlayer = playerOne;
         }
