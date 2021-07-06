@@ -40,7 +40,7 @@ public class GameTest {
     @Test
     public void shouldPromptPlayerOneToMoveWhenTheGameStarts() throws IOException {
         when(bufferedReader.readLine()).thenReturn("-1");
-//        player.currentPlayer = "Player 1";
+        player.currentPlayer = "Player 1";
         game.start();
         verify(printStream).println("Player 1, enter a number indicating where you want to mark the board");
     }

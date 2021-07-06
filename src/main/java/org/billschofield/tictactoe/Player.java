@@ -2,16 +2,10 @@ package org.billschofield.tictactoe;
 
 public class Player {
 
-    public String playerOne;
-    public String playerTwo;
-    public String currentPlayer;
+    public String playerOne = "Player 1";
+    public String playerTwo = "Player 2";
+    public String currentPlayer = playerOne;
 
-
-    public Player() {
-        playerOne = "Player 1";
-        playerTwo = "Player 2";
-        currentPlayer = playerOne;
-    }
 
     public int nextMove() {
 

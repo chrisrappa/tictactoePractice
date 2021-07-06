@@ -16,6 +16,8 @@ public class Game {
     private BufferedReader bufferedReader;
     private Player player;
 
+    int currentPlayerMoves;
+
     List<String> locationList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
     ArrayList<Integer> numbersEntered = new ArrayList<>();
 
@@ -28,6 +30,7 @@ public class Game {
 
     public void start() {
 
+        currentPlayerMoves = 0;
         board.draw();
         runNewRound();
 
@@ -35,21 +38,19 @@ public class Game {
 
     public void runNewRound() {
 
+        currentPlayerMoves += 1; //Keep track of how many times this player has input move
         int playerMove = determinePlayerMove();
+        System.out.println(playerMove);
         if(numbersEntered.contains(playerMove)){
             System.out.println("You have entered a duplicate, try again");
-            return;
+            if(currentPlayerMoves < 3){
+                runNewRound();
+            } else {
+                start();
+            }
         }
 
         numbersEntered.add(playerMove); // Add player move to an array
-
-//        String stringPlayerMove = String.valueOf(playerMove); // We needed to convert playerMove to a String in order for it to find the index in an array of Strings
-//        int indexStringPlayerMove = locationList.indexOf(stringPlayerMove);
-//        if(indexStringPlayerMove == -1){
-//            System.out.println("You have entered a duplicate, try again");
-//            board.draw();
-//            runNewRound();
-//        }
 
         locationList.set(playerMove - 1, "X");
         board.mark(playerMove, player.currentPlayer);
@@ -61,7 +62,12 @@ public class Game {
 
 
     private int determinePlayerMove() {
-        printStream.println(player.currentPlayer + ", enter a number indicating where you want to mark the board");
+        if(player.currentPlayer == "Player 1"){
+            printStream.println("Player 1, enter a number indicating where you want to mark the board");
+        } else {
+            printStream.println("Player 2, enter a number indicating where you want to mark the board");
+        }
+
         String locationString = readLine();
         int playerMove = Math.abs(parseInt(locationString));
 
