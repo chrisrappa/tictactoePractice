@@ -23,6 +23,7 @@ public class Board {
     }
 
     public void mark(int location, String currentPlayer) {
+
         if(currentPlayer == "Player 1"){
             boardString = boardString.replace(String.valueOf(location), "X");
         } else {

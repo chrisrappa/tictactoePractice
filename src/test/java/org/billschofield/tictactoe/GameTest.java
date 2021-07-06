@@ -24,6 +24,7 @@ public class GameTest {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
+//        player = new Player();
         player = mock(Player.class);
         game = new Game(board, printStream, bufferedReader, player);
     }
@@ -39,8 +40,8 @@ public class GameTest {
     @Test
     public void shouldPromptPlayerOneToMoveWhenTheGameStarts() throws IOException {
         when(bufferedReader.readLine()).thenReturn("-1");
+//        player.currentPlayer = "Player 1";
         game.start();
-
         verify(printStream).println("Player 1, enter a number indicating where you want to mark the board");
     }
 
@@ -64,12 +65,12 @@ public class GameTest {
         verify(board).mark(1, player.currentPlayer);
     }
 
-    @Test
-    public void shouldMarkTheBoardWhenThePlayerMovesInLocationOneThousandAndTheGameStarts() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("1000");
-
-        game.start();
-
-        verify(board).mark(1000, player.currentPlayer);
-    }
+//    @Test
+//    public void shouldMarkTheBoardWhenThePlayerMovesInLocationOneThousandAndTheGameStarts() throws IOException {
+//        when(bufferedReader.readLine()).thenReturn("1000");
+//
+//        game.start();
+//
+//        verify(board).mark(1000, player.currentPlayer);
+//    }
 }

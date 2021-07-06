@@ -17,7 +17,7 @@ public class Game {
     private Player player;
 
     List<String> locationList = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-
+    ArrayList<Integer> numbersEntered = new ArrayList<>();
 
     public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player player) {
         this.board = board;
@@ -28,35 +28,34 @@ public class Game {
 
     public void start() {
 
-
         board.draw();
-        int playerMove = determinePlayerMove();
-        // String locationToChange = locationList.get(playerMove - 1);
         runNewRound();
 
     }
 
     public void runNewRound() {
+
         int playerMove = determinePlayerMove();
-
-//        For some reason the implemention of lists alone is causing the tests
-//        to fail
-
-        String locationToChange = locationList.get(playerMove - 1);
-//        board.draw();
-
-        if(locationToChange != "X" && locationToChange != "O"){
-//            // locationList.set(playerMove - 1, "X");
-
-            board.mark(playerMove, player.currentPlayer);
-            board.mark(player.nextMove(), player.currentPlayer);
-            board.draw();
-//            runNewRound();
-        } else {
+        if(numbersEntered.contains(playerMove)){
             System.out.println("You have entered a duplicate, try again");
-            board.draw();
-//            runNewRound();
+            return;
         }
+
+        numbersEntered.add(playerMove); // Add player move to an array
+
+//        String stringPlayerMove = String.valueOf(playerMove); // We needed to convert playerMove to a String in order for it to find the index in an array of Strings
+//        int indexStringPlayerMove = locationList.indexOf(stringPlayerMove);
+//        if(indexStringPlayerMove == -1){
+//            System.out.println("You have entered a duplicate, try again");
+//            board.draw();
+//            runNewRound();
+//        }
+
+        locationList.set(playerMove - 1, "X");
+        board.mark(playerMove, player.currentPlayer);
+        board.mark(player.nextMove(), player.currentPlayer);
+        board.draw();
+        runNewRound();
     }
 
 
@@ -64,7 +63,8 @@ public class Game {
     private int determinePlayerMove() {
         printStream.println(player.currentPlayer + ", enter a number indicating where you want to mark the board");
         String locationString = readLine();
-        int playerMove = parseInt(locationString);
+        int playerMove = Math.abs(parseInt(locationString));
+
         return playerMove;
     }
 

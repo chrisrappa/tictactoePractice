@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.billschofield.tictactoe.BoardTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-07-01T19:54:27" hostname="rappac-a01.vmware.com" time="0.875">
+<testsuite name="org.billschofield.tictactoe.BoardTest" tests="3" skipped="0" failures="1" errors="0" timestamp="2021-07-06T14:56:25" hostname="rappac-a01.vmware.com" time="0.618">
   <properties/>
-  <testcase name="AfterPlayerOneMakesAnXPromptAsksForPlayerTwoMoveAndMakesAnO" classname="org.billschofield.tictactoe.BoardTest" time="0.875">
+  <testcase name="shouldDrawThreeByThreeMatrixWhenBoardDraw" classname="org.billschofield.tictactoe.BoardTest" time="0.595"/>
+  <testcase name="WhenPlayerOneEnters2ThenPosition2IsReplacedWithAnX" classname="org.billschofield.tictactoe.BoardTest" time="0.001"/>
+  <testcase name="AfterPlayerOneMakesAnXPromptAsksForPlayerTwoMoveAndMakesAnO" classname="org.billschofield.tictactoe.BoardTest" time="0.022">
     <failure message="Argument(s) are different! Wanted:&#10;printStream.println(&#10;    &quot;1|2|3&#10;-----&#10;O|X|6&#10;-----&#10;7|8|9&quot;&#10;);&#10;-&gt; at org.billschofield.tictactoe.BoardTest.AfterPlayerOneMakesAnXPromptAsksForPlayerTwoMoveAndMakesAnO(BoardTest.java:54)&#10;Actual invocation has different arguments:&#10;printStream.println(&#10;    &quot;1|2|3&#10;-----&#10;4|5|6&#10;-----&#10;7|8|9&quot;&#10;);&#10;-&gt; at org.billschofield.tictactoe.Board.draw(Board.java:22)&#10;" type="org.mockito.exceptions.verification.junit.ArgumentsAreDifferent">Argument(s) are different! Wanted:
 printStream.println(
     &quot;1|2|3
