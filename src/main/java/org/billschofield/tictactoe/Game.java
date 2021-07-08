@@ -29,7 +29,7 @@ public class Game {
     boolean playerForfeit = false; // When switched to true, the board won't print for next player's turn
 
     List<Integer> locationNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    ArrayList<Integer> availableMoves = new ArrayList<>(locationNumbers);
+    public ArrayList<Integer> availableMoves = new ArrayList<>(locationNumbers);
 
     public void start() {
         handlePlayersAndTurns();
@@ -84,7 +84,7 @@ public class Game {
 
     private void successfulMove() {
         if(availableMoves.contains(playerMove)){
-            Player.mark(playerMove, currentPlayer);
+            player.mark(playerMove, currentPlayer);
             availableMoves.remove(availableMoves.indexOf(playerMove));
             totalInvalidEntries = 0; // reset after successful move
             playerForfeit = false; // reset after player forfeit so next round doesn't end the game
