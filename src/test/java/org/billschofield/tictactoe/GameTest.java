@@ -41,7 +41,6 @@ public class GameTest {
 
     @Test
     public void shouldPromptPlayerOneToMoveWhenTheGameStarts() throws IOException {
-//        when(game.determinePlayerTurn()).thenReturn("Player 1");
         when(bufferedReader.readLine()).thenReturn("-1");
         game.start();
 
