@@ -33,7 +33,6 @@ public class GameTest {
     @Test
     public void shouldDrawTheBoardWhenTheGameStarts() throws IOException {
         when(bufferedReader.readLine()).thenReturn("1");
-
         game.start();
 
         verify(board, times(2)).draw();
@@ -52,8 +51,8 @@ public class GameTest {
     public void shouldMarkTheBoardWherePlayerOneMoves() throws IOException {
         when(bufferedReader.readLine()).thenReturn("1");
         game.start();
-        verify(player, times(1)).mark(1, "Player 1");
 
+        verify(player, times(1)).mark(1, "Player 1");
     }
 
 
@@ -61,6 +60,7 @@ public class GameTest {
     public void shouldChangeWhichPlayersTurnItIsEveryTimeAMoveIsMade() throws IOException {
         when(bufferedReader.readLine()).thenReturn("1");
         game.start();
+
         verify(printStream).println("Player 2, enter a number indicating where you want to mark the board");
     }
 
@@ -71,6 +71,5 @@ public class GameTest {
 
         int expected = 8;
         assert (game.availableMoves.size() == expected);
-
     }
 }
