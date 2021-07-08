@@ -10,18 +10,18 @@ import static org.mockito.Mockito.verify;
 
 public class BoardTest {
 
-    @Test
-    public void shouldDrawThreeByThreeMatrixWhenBoardDraw() {
-        PrintStream printStream = mock(PrintStream.class);
-        Board board = new Board(printStream);
-
-        board.draw();
-
-        verify(printStream).println(
-                "1|2|3\n" +
-                "-----\n" +
-                "4|5|6\n" +
-                "-----\n" +
-                "7|8|9");
-    }
+//    @Test
+//    public void shouldDrawThreeByThreeMatrixWhenBoardDraw() {
+//        PrintStream printStream = mock(PrintStream.class);
+//        Board board = new Board(printStream);
+//
+//        board.draw();
+//
+//        verify(printStream).println(
+//                "1|2|3\n" +
+//                "-----\n" +
+//                "4|5|6\n" +
+//                "-----\n" +
+//                "7|8|9");
+//    }
 }

@@ -21,22 +21,23 @@ public class PlayerTest {
     public void setUp() {
         bufferedReader = mock(BufferedReader.class);
         player = new Player();
+
     }
 
-    @Test
-    public void shouldMoveWhereThePlayerChoose() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("1");
-        int move = player.nextMove();
-
-        assertThat(move, is(1));
-    }
-
-    @Test
-    public void shouldMarkTheBoardWhenThePlayerMovesInLocationOneThousand() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("1000");
-
-        int move = player.nextMove();
-
-        assertThat(move, is(1000));
-    }
+//    @Test
+//    public void shouldMoveWhereThePlayerChoose() throws IOException {
+//        when(bufferedReader.readLine()).thenReturn("1");
+//        int move = playerOne.nextMove();
+//
+//        assertThat(move, is(1));
+//    }
+//
+//    @Test
+//    public void shouldMarkTheBoardWhenThePlayerMovesInLocationOneThousand() throws IOException {
+//        when(bufferedReader.readLine()).thenReturn("1000");
+//
+//        int move = player.nextMove();
+//
+//        assertThat(move, is(1000));
+//    }
 }
