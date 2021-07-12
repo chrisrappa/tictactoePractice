@@ -4,32 +4,35 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.lang.Integer.*;
 
 public class Game {
-    private Board board;
-    private PrintStream printStream;
-    private BufferedReader bufferedReader;
-    private Player player;
+    private final Board board;
+    private final PrintStream printStream;
+    private final BufferedReader bufferedReader;
+    private final Player player1;
+    private final Player player2;
+    private Player currentPlayerObject;
 
-    public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player player) {
+    private String currentPlayer = "Player 1";
+    private int playerMove = 0;
+    private int numTries = 0; // ends turn if this number grows to 1, resets on every turn.
+    private int totalInvalidEntries = 0; // This will end the game only if both players forfeit their turns one after the other.
+    private boolean playerForfeit = false; // When switched to true, the board won't print for next player's turn
+    private final List<Integer> availableMoves;
+
+
+    public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player player1, Player player2, List<Integer> availableMoves) {
         this.board = board;
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
-        this.player = player;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.currentPlayerObject = player1;
+        this.availableMoves = availableMoves;
     }
-
-    public String currentPlayer = "";
-    int playerMove = 0;
-    int numTries = 0; // ends turn if this number grows to 1, resets on every turn.
-    int totalInvalidEntries = 0; // This will end the game only if both players forfeit their turns one after the other.
-    boolean playerForfeit = false; // When switched to true, the board won't print for next player's turn
-
-    List<Integer> locationNumbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    public ArrayList<Integer> availableMoves = new ArrayList<>(locationNumbers);
 
     public void start() {
         handlePlayersAndTurns();
@@ -37,36 +40,37 @@ public class Game {
     }
 
     public void handlePlayersAndTurns() {
-        if(totalInvalidEntries < 2 && availableMoves.size() > 0){
-                determinePlayerTurn();
-                printStream.println(currentPlayer + ", enter a number indicating where you want to mark the board");
+        while(!board.isFull()){
                 numTries = 0;
-                if(playerForfeit == false){
+                if(!playerForfeit){
                     board.draw(); // only draws board if last player didn't forfeit turn.
                 }
                 runPlayerTurn();
+                determinePlayerTurn();
         }
-
-        return;
     }
 
-    public String determinePlayerTurn() {
-        switch (currentPlayer){
-            case "Player 1":
-                currentPlayer = "Player 2";
-                break;
-            default:
-                currentPlayer = "Player 1";
+    private void determinePlayerTurn() {
+//        switch (currentPlayer){
+//            case "Player 1":
+//                currentPlayer = "Player 2";
+//                break;
+//            default:
+//                currentPlayer = "Player 1";
+//        }
+
+        if(currentPlayerObject == player1){
+            currentPlayerObject = player2;
+        } else {
+            currentPlayerObject = player1;
         }
 
-        return currentPlayer;
     }
 
     public void runPlayerTurn(){
         inputPlayerMove();
         successfulMove();
         unsuccessfulMove();
-        return;
     }
 
     private void unsuccessfulMove() {
@@ -84,8 +88,9 @@ public class Game {
 
     private void successfulMove() {
         if(availableMoves.contains(playerMove)){
-            player.mark(playerMove, currentPlayer);
-            availableMoves.remove(availableMoves.indexOf(playerMove));
+
+            currentPlayerObject.makeMove(playerMove);
+            availableMoves.remove((Integer) playerMove);
             totalInvalidEntries = 0; // reset after successful move
             playerForfeit = false; // reset after player forfeit so next round doesn't end the game
             handlePlayersAndTurns();
