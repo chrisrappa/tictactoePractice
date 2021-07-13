@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.billschofield.tictactoe.PlayerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-13T21:29:38" hostname="rappac-a01.vmware.com" time="0.36">
+  <properties/>
+  <testcase name="shouldTellTheBoardToDrawMarkWhenPlayerAsks" classname="org.billschofield.tictactoe.PlayerTest" time="0.36"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

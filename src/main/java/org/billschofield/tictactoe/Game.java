@@ -7,31 +7,33 @@ import java.io.PrintStream;
 import static java.lang.Integer.*;
 
 public class Game {
-    private Board board;
-    private PrintStream printStream;
-    private BufferedReader bufferedReader;
-    private Player playerOne;
+    private final Board board;
+    private final PrintStream printStream;
+    private final BufferedReader bufferedReader;
+    private final Player playerOne;
+    private final Player playerTwo;
 
-    public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player playerOne) {
+
+    public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player playerOne, Player playerTwo) {
         this.board = board;
         this.printStream = printStream;
         this.bufferedReader = bufferedReader;
         this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
     public void start() {
         board.draw();
-        int playerOnesMove = determinePlayerOneMove();
-        board.mark(playerOnesMove);
-        board.mark(playerOne.nextMove());
+        int playerMove = determinePlayerMove();
+        playerOne.makeMove(playerMove);
+        board.drawPlayerMark(playerMove, playerOne.symbol);
         board.draw();
     }
 
-    private int determinePlayerOneMove() {
+    private int determinePlayerMove() {
         printStream.println("Player 1, enter a number indicating where you want to mark the board");
         String locationString = readLine();
-        int playerOnesMove = parseInt(locationString);
-        return playerOnesMove;
+        return parseInt(locationString);
     }
 
     private String readLine() {

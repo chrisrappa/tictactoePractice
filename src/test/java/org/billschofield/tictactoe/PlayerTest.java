@@ -5,38 +5,30 @@ import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PlayerTest {
 
-    private BufferedReader bufferedReader;
-    private Player player;
+    private Player X;
+    private PrintStream printStream;
+    private Board board;
+
 
     @Before
     public void setUp() {
-        bufferedReader = mock(BufferedReader.class);
-        player = new Player();
+        printStream = mock(PrintStream.class);
+        board = mock(Board.class);
+        X = new Player("X", printStream, "Player 1", board);
     }
 
     @Test
-    public void shouldMoveWhereThePlayerChoose() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("1");
-        int move = player.nextMove();
-
-        assertThat(move, is(1));
+    public void shouldTellTheBoardToDrawMarkWhenPlayerAsks() throws IOException {
+        X.makeMove(1);
+        verify(board).drawPlayerMark(1, "X");
     }
 
-    @Test
-    public void shouldMarkTheBoardWhenThePlayerMovesInLocationOneThousand() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("1000");
-
-        int move = player.nextMove();
-
-        assertThat(move, is(1000));
-    }
 }
