@@ -26,7 +26,6 @@ public class Game {
         board.draw();
         int playerMove = determinePlayerMove();
         playerOne.makeMove(playerMove);
-        board.drawPlayerMark(playerMove, playerOne.symbol);
         board.draw();
     }
 
