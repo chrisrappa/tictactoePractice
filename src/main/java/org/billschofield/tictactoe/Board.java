@@ -28,5 +28,16 @@ public class Board {
         String locationToString = String.valueOf(location);
         int findStringIndex = boardLocations.indexOf(locationToString);
         boardLocations.set(findStringIndex, symbol);
+        calculateAvailableMoves();
+    }
+
+    public int calculateAvailableMoves(){
+        int availableMoves = 0;
+        for(int i = 0; i < boardLocations.size(); i++){
+            if(!boardLocations.get(i).equals("X") && !boardLocations.get(i).equals("O")){
+                availableMoves += 1;
+            }
+        }
+        return availableMoves;
     }
 }

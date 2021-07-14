@@ -12,7 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
         PrintStream printStream = System.out;
-
         Board board = new Board(printStream, new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9")));
         Player X = new Player("X", printStream, "Player 1", board);
         Player O = new Player("O", printStream, "Player 2", board);

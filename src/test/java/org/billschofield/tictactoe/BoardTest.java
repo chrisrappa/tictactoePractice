@@ -46,4 +46,12 @@ public class BoardTest {
         assertEquals (expected, boardLocations.get(2));
     }
 
+    @Test
+    public void shouldCalculateOneLessAvaibleMoveAfterPlayerMoves(){
+        board.drawPlayerMark(3, "X");
+        int availableMoves = board.calculateAvailableMoves();
+        int expected = 8;
+        assertEquals(expected, availableMoves);
+    }
+
 }

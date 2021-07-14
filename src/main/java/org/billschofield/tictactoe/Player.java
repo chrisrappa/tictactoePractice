@@ -9,6 +9,7 @@ public class Player {
     String name;
     Board board;
 
+
     public Player(String symbol, PrintStream printStream, String name, Board board){
         this.symbol = symbol;
         this.printStream = printStream;
@@ -19,4 +20,5 @@ public class Player {
     public void makeMove(int location) {
         board.drawPlayerMark(location, symbol);
     }
+
 }

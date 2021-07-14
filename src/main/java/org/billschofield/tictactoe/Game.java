@@ -12,6 +12,7 @@ public class Game {
     private final BufferedReader bufferedReader;
     private final Player playerOne;
     private final Player playerTwo;
+    private Player currentPlayer;
 
 
     public Game(Board board, PrintStream printStream, BufferedReader bufferedReader, Player playerOne, Player playerTwo) {
@@ -20,19 +21,33 @@ public class Game {
         this.bufferedReader = bufferedReader;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+        this.currentPlayer = playerOne;
     }
 
     public void start() {
-        board.draw();
-        int playerMove = determinePlayerMove();
-        playerOne.makeMove(playerMove);
+        while(board.calculateAvailableMoves() != 0){
+            board.draw();
+            int playerMove = determinePlayerMove();
+            currentPlayer.makeMove(playerMove);
+            determinePlayerTurn();
+        }
         board.draw();
     }
 
     private int determinePlayerMove() {
-        printStream.println("Player 1, enter a number indicating where you want to mark the board");
+        printStream.println(currentPlayer.name + ", enter a number indicating where you want to mark the board");
+
+
         String locationString = readLine();
         return parseInt(locationString);
+    }
+
+    private void determinePlayerTurn(){
+        if(currentPlayer == playerOne){
+            currentPlayer = playerTwo;
+        } else {
+            currentPlayer = playerOne;
+        }
     }
 
     private String readLine() {

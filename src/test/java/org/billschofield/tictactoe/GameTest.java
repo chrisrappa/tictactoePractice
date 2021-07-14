@@ -17,6 +17,7 @@ public class GameTest {
     private BufferedReader bufferedReader;
     private Player playerOne;
     private Player playerTwo;
+    private Player currentPlayer;
 
     @Before
     public void setUp() {
@@ -25,12 +26,15 @@ public class GameTest {
         bufferedReader = mock(BufferedReader.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
+        currentPlayer = playerOne;
         game = new Game(board, printStream, bufferedReader, playerOne, playerTwo);
     }
 
     @Test
     public void shouldDrawTheBoardTwiceWhenTheGameStarts() throws IOException {
         when(bufferedReader.readLine()).thenReturn("-1");
+        when(board.calculateAvailableMoves()).thenReturn(1).thenReturn(0);
+
         game.start();
 
         verify(board, times(2)).draw();
@@ -38,12 +42,23 @@ public class GameTest {
 
     @Test
     public void shouldPromptPlayerOneToMoveWhenTheGameStarts() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("-1");
+        when(bufferedReader.readLine()).thenReturn("1");
+        when(board.calculateAvailableMoves()).thenReturn(1).thenReturn(0);
+        playerOne.name = "Player 1";
         game.start();
+
 
         verify(printStream).println("Player 1, enter a number indicating where you want to mark the board");
     }
 
+    @Test
+    public void shouldSwitchToPlayer2AfterPlayerOneMovesAndPromptPlayerTwo() throws IOException {
+        when(bufferedReader.readLine()).thenReturn("1");
+        when(board.calculateAvailableMoves()).thenReturn(2).thenReturn(1).thenReturn(0);
+        playerTwo.name = "Player 2";
+        game.start();
 
+        verify(printStream).println("Player 2, enter a number indicating where you want to mark the board");
+    }
 }
 
