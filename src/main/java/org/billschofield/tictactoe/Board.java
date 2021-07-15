@@ -34,9 +34,8 @@ public class Board {
     }
 
     public boolean isValidMove(int location){
-        String locationToString = String.valueOf(location);
-        int findStringIndex = boardLocations.indexOf(locationToString);
-        if(findStringIndex == -1){
+        int moveIndex = findMoveIndex(location);
+        if(moveIndex == -1){
             return false;
         }
         return true;
