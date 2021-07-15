@@ -19,25 +19,10 @@ public class Main {
         Game game = new Game(board, printStream, bufferedReader, X, O);
         game.start();
 
-//        We want to build everything else in the program utilizing abstractions without
-//        utilizing anything that is static so that from the main class we can pass down
-//        static information through the app tree from here.
-//        This enables us to change the client side of the app without breaking any of the
-//        Moving parts. What are things that we want to pass down here that we don't want
-//        the rest of the app making the decision on?
-
-//        Number of locations on the board or size of the board as well as language of it
-//        Number of players in the game
-//        Mark symbol for each player in the game
-
-//        What does game need to know about?
-//        How many players there are and who's turn it is
-//
-//        What does board need to know?
-//        How many locations and where to print whatever mark
-
-//        What does Player need to know?
-//        What symbol mark the board with, how to mark it, and where it can mark the board
+//  Need to create a class called WinCondition that takes in the current board
+//  And checks to see if the same symbol is present between 1 & 3, 4 & 6, or 7 & 9
+//  A primitive obsessed way to do with would be if(board.get(0) == board.get(1) && board.get(1) == board.get(2)
+//  Then current player wins, but that's gross. Find a way to use objects instead.
 
     }
 }
