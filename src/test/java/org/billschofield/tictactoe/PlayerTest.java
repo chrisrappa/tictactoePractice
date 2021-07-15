@@ -32,4 +32,7 @@ public class PlayerTest {
     }
 
 
+//    When the player tells the board to make a mark, the board will tell it
+//    if it is a valid mark, if not it will tell the player to go again.
+
 }

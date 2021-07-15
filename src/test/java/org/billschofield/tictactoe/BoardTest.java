@@ -54,4 +54,13 @@ public class BoardTest {
         assertEquals(expected, availableMoves);
     }
 
+    @Test
+    public void shouldReturnFalseWhenThePlayerMakesAnInvalidMove(){
+
+        boolean expected = false;
+
+        assertEquals(expected, board.isValidMove(-1));
+
+    }
+
 }

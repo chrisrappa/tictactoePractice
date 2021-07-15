@@ -25,11 +25,32 @@ public class Board {
     }
 
     public void drawPlayerMark(int location, String symbol) {
+        int moveIndex = findMoveIndex(location);
+        boolean validMove = isValidMove(location);
+        if(validMove == true){
+            boardLocations.set(moveIndex, symbol);
+            calculateAvailableMoves();
+        }
+    }
+
+    public boolean isValidMove(int location){
         String locationToString = String.valueOf(location);
         int findStringIndex = boardLocations.indexOf(locationToString);
-        boardLocations.set(findStringIndex, symbol);
-        calculateAvailableMoves();
+        if(findStringIndex == -1){
+            return false;
+        }
+        return true;
     }
+
+    private int findMoveIndex(int i){
+        String locationToString = String.valueOf(i);
+        int findStringIndex = boardLocations.indexOf(locationToString);
+
+        return findStringIndex;
+    }
+
+//    Board should be the one to say whether a move is valid or not
+//    Then it should return this to the game method, handle invalid move
 
     public int calculateAvailableMoves(){
         int availableMoves = 0;

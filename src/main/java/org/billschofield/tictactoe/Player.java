@@ -18,7 +18,8 @@ public class Player {
     }
 
     public void makeMove(int location) {
-        board.drawPlayerMark(location, symbol);
-    }
 
+        board.drawPlayerMark(location, symbol);
+
+    }
 }

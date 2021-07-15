@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GameTest {
@@ -32,8 +33,10 @@ public class GameTest {
 
     @Test
     public void shouldDrawTheBoardTwiceWhenTheGameStarts() throws IOException {
-        when(bufferedReader.readLine()).thenReturn("-1");
+        when(bufferedReader.readLine()).thenReturn("1");
         when(board.calculateAvailableMoves()).thenReturn(1).thenReturn(0);
+        when(board.isValidMove(1)).thenReturn(true).thenReturn(false);
+
 
         game.start();
 
@@ -55,10 +58,22 @@ public class GameTest {
     public void shouldSwitchToPlayer2AfterPlayerOneMovesAndPromptPlayerTwo() throws IOException {
         when(bufferedReader.readLine()).thenReturn("1");
         when(board.calculateAvailableMoves()).thenReturn(2).thenReturn(1).thenReturn(0);
+        when(board.isValidMove(1)).thenReturn(true);
+
         playerTwo.name = "Player 2";
         game.start();
 
         verify(printStream).println("Player 2, enter a number indicating where you want to mark the board");
+    }
+
+    @Test
+    public void shouldPromptPlayerToTryAgainIfTheyMakeAnInvalidMove() throws IOException {
+        when(board.calculateAvailableMoves()).thenReturn(1).thenReturn(0);
+        when(bufferedReader.readLine()).thenReturn("-1");
+
+        game.start();
+
+        verify(printStream).println("Please make a valid move");
     }
 }
 

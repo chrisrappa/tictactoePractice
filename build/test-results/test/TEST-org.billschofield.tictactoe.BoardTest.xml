@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.billschofield.tictactoe.BoardTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-07-14T18:00:58" hostname="rappac-a01.vmware.com" time="0.324">
+<testsuite name="org.billschofield.tictactoe.BoardTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-07-15T20:01:55" hostname="rappac-a01.vmware.com" time="0.475">
   <properties/>
-  <testcase name="shouldDrawPlayerSymbolWhenPlayerMakesMove" classname="org.billschofield.tictactoe.BoardTest" time="0.314"/>
-  <testcase name="shouldDrawThreeByThreeMatrixWhenBoardDraw" classname="org.billschofield.tictactoe.BoardTest" time="0.009"/>
+  <testcase name="shouldDrawPlayerSymbolWhenPlayerMakesMove" classname="org.billschofield.tictactoe.BoardTest" time="0.457"/>
+  <testcase name="shouldDrawThreeByThreeMatrixWhenBoardDraw" classname="org.billschofield.tictactoe.BoardTest" time="0.016"/>
+  <testcase name="shouldReturnFalseWhenThePlayerMakesAnInvalidMove" classname="org.billschofield.tictactoe.BoardTest" time="0.0"/>
   <testcase name="shouldCalculateOneLessAvaibleMoveAfterPlayerMoves" classname="org.billschofield.tictactoe.BoardTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
