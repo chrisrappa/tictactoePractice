@@ -75,5 +75,16 @@ public class GameTest {
 
         verify(printStream).println("Please make a valid move");
     }
+
+    @Test
+    public void gameShouldOnlyAskBoardToDrawOnceWhenGameIsOver() throws IOException {
+        when(board.calculateAvailableMoves()).thenReturn(0);
+        when(bufferedReader.readLine()).thenReturn("1");
+        when(board.isValidMove(1)).thenReturn(true);
+
+        game.start();
+
+        verify(board, times(1)).draw();
+    }
 }
 

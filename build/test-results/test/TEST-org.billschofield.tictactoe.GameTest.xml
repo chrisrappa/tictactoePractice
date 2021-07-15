@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.billschofield.tictactoe.GameTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-07-15T20:01:55" hostname="rappac-a01.vmware.com" time="0.102">
+<testsuite name="org.billschofield.tictactoe.GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-15T22:10:44" hostname="rappac-a01.vmware.com" time="0.104">
   <properties/>
-  <testcase name="shouldPromptPlayerOneToMoveWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.097"/>
+  <testcase name="shouldPromptPlayerOneToMoveWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.099"/>
   <testcase name="shouldSwitchToPlayer2AfterPlayerOneMovesAndPromptPlayerTwo" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
   <testcase name="shouldDrawTheBoardTwiceWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.002"/>
+  <testcase name="gameShouldOnlyAskBoardToDrawOnceWhenGameIsOver" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
   <testcase name="shouldPromptPlayerToTryAgainIfTheyMakeAnInvalidMove" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
