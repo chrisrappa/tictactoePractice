@@ -34,12 +34,12 @@ public class Game {
             board.draw();
             int playerMove = determinePlayerMove();
             boolean validMove = handleInvalidMove(playerMove);
-            if(!validMove){
+            if(validMove){
+                currentPlayer.makeMove(playerMove);
+                determinePlayerTurn();
+            } else {
                 printStream.println("Please make a valid move");
-                start();
             }
-            currentPlayer.makeMove(playerMove);
-            determinePlayerTurn();
         }
         board.draw();
     }

@@ -78,13 +78,13 @@ public class GameTest {
 
     @Test
     public void gameShouldOnlyAskBoardToDrawOnceWhenGameIsOver() throws IOException {
-        when(board.calculateAvailableMoves()).thenReturn(0);
-        when(bufferedReader.readLine()).thenReturn("1");
-        when(board.isValidMove(1)).thenReturn(true);
+        when(board.calculateAvailableMoves()).thenReturn(1).thenReturn(1).thenReturn(0);
+        when(bufferedReader.readLine()).thenReturn("-1").thenReturn("9");
+        when(board.isValidMove(9)).thenReturn(true);
 
         game.start();
 
-        verify(board, times(1)).draw();
+        verify(board, times(3)).draw();
     }
 }
 
