@@ -23,6 +23,7 @@ public class BoardTest {
         printStream = mock(PrintStream.class);
         boardLocations = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         board = new Board(printStream, boardLocations);
+
     }
 
     @Test
@@ -47,7 +48,7 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldCalculateOneLessAvaibleMoveAfterPlayerMoves(){
+    public void shouldCalculateOneLessAvailableMoveAfterPlayerMoves(){
         board.drawPlayerMark(3, "X");
         int availableMoves = board.calculateAvailableMoves();
         int expected = 8;

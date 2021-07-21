@@ -13,6 +13,7 @@ import static org.mockito.Mockito.*;
 public class GameTest {
 
     private Board board;
+    private WinCondition winCondition;
     private Game game;
     private PrintStream printStream;
     private BufferedReader bufferedReader;
@@ -23,6 +24,7 @@ public class GameTest {
     @Before
     public void setUp() {
         board = mock(Board.class);
+        winCondition = mock(WinCondition.class);
         printStream = mock(PrintStream.class);
         bufferedReader = mock(BufferedReader.class);
         playerOne = mock(Player.class);

@@ -17,6 +17,7 @@ public class Main {
         Player O = new Player("O", printStream, "Player 2", board);
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         Game game = new Game(board, printStream, bufferedReader, X, O);
+        WinCondition winCondition = new WinCondition(game);
         game.start();
 
 //  Need to create a class called WinCondition that takes in the current board

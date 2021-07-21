@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Board {
     private final PrintStream printStream;
-    private final ArrayList<String> boardLocations;
+    public final ArrayList<String> boardLocations;
 
     public Board(PrintStream printStream, ArrayList<String> boardLocations) {
         this.printStream = printStream;

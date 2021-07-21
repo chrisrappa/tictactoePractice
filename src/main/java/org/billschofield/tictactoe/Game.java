@@ -10,8 +10,8 @@ public class Game {
     private final Board board;
     private final PrintStream printStream;
     private final BufferedReader bufferedReader;
-    private final Player playerOne;
-    private final Player playerTwo;
+    public final Player playerOne;
+    public final Player playerTwo;
     private Player currentPlayer;
 
 
@@ -58,12 +58,14 @@ public class Game {
         return parseInt(locationString);
     }
 
-    private void determinePlayerTurn(){
+    public Player determinePlayerTurn(){
         if(currentPlayer == playerOne){
             currentPlayer = playerTwo;
         } else {
             currentPlayer = playerOne;
         }
+
+        return currentPlayer;
     }
 
 

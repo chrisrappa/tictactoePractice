@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.billschofield.tictactoe.GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-21T18:58:03" hostname="rappac-a01.vmware.com" time="0.116">
+<testsuite name="org.billschofield.tictactoe.GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-21T20:22:47" hostname="rappac-a01.vmware.com" time="0.106">
   <properties/>
-  <testcase name="shouldPromptPlayerOneToMoveWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.112"/>
+  <testcase name="shouldPromptPlayerOneToMoveWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.102"/>
   <testcase name="shouldSwitchToPlayer2AfterPlayerOneMovesAndPromptPlayerTwo" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
   <testcase name="shouldDrawTheBoardTwiceWhenTheGameStarts" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
   <testcase name="gameShouldOnlyAskBoardToDrawOnceWhenGameIsOver" classname="org.billschofield.tictactoe.GameTest" time="0.001"/>
